@@ -1,0 +1,145 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "src/app/modules/api/**/*.ts",
+    "src/**/*.spec.ts",
+    "src/test.ts",
+    "src/polyfills.ts"
+  ],
+  "rules": {
+    "linebreak-style": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.*?.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:import/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@angular-eslint/recommended",
+        "airbnb-typescript/base"
+      ],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment" : [
+          "error",
+          {
+            "ts-ignore" : "allow-with-description"
+          }
+        ],
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-floating-promises": "warn",
+        "@typescript-eslint/no-useless-constructor": "error",
+        "@typescript-eslint/no-empty-interface": "error",
+        "@typescript-eslint/unbound-method": [
+          "error",
+          {
+            "ignoreStatic": true
+          }
+        ],
+        "no-trailing-spaces": "error",
+        "no-var": "error",
+        "no-useless-constructor": "off",
+        "eqeqeq": ["error", "smart"],
+        "function-paren-newline": [
+          "error",
+          "consistent"
+        ],
+        "array-bracket-newline": [
+          "error",
+          {
+            "multiline": true,
+            "minItems": 3
+          }
+        ],
+        "no-empty-function": "off",
+        "@typescript-eslint/no-empty-function": [
+          "error",
+          {
+            "allow": [
+              "overrideMethods"
+            ]
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowExpressions": true
+          }
+        ],
+        "comma-dangle": "off",
+        "@typescript-eslint/comma-dangle": [
+          "error", {
+            "arrays": "always-multiline",
+            "objects": "always-multiline",
+            "imports": "always-multiline",
+            "exports": "always-multiline",
+            "functions": "never",
+            "enums": "always-multiline",
+            "generics": "never",
+            "tuples": "never"
+          }
+        ],
+        "padding-line-between-statements": [
+          "error",
+          { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
+          { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
+          { "blankLine": "always", "prev": "*", "next": ["for", "if", "switch", "do", "while", "try", "throw", "debugger"]},
+          { "blankLine": "always", "prev": ["block", "block-like", "multiline-block-like"], "next": "*"}
+        ],
+        "lines-between-class-members": "off",
+        "@typescript-eslint/lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": false, "exceptAfterOverload": false }],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.component.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "max-len": ["error", { "code": 180 }],
+        "@angular-eslint/template/eqeqeq": [
+          "error",
+          {
+            "allowNullOrUndefined": true
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "parser": "@angular-eslint/template-parser",
+      "parserOptions": {
+        "project": "./tsconfig.app.json",
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+      },
+      "plugins": ["@angular-eslint/template"],
+      "rules": {}
+    }
+  ]
+}
